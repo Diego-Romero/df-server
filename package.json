@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsc && node dist/app.js",
     "build": "rm -rf dist && ./node_modules/typescript/bin/tsc",
-    "start": "node dist/app.js",
+    "start": "node -r dotenv/config dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
