@@ -1,12 +1,13 @@
-require('dotenv').config()
 import express from 'express';
 
-import config from './config';
+// import config from './config';
 
-console.log(`CONFIG: `, config)
+// console.log(`CONFIG: `, config)
+
+console.log(`ENV: ${process.env.NODE_ENV}`)
 
 const app = express()
-const port = config!.port || 8080
+const port = process.env.PORT || 8080
 
 app.get('/', (req, res) => {
     res.status(200).send("hello from server 2");
