@@ -1,8 +1,8 @@
 import express from 'express';
 
-// import config from './config';
+import config from './config';
 
-// console.log(`CONFIG: `, config)
+console.log(`CONFIG: `, config)
 
 console.log(`ENV: ${process.env.NODE_ENV}`)
 
