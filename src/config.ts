@@ -1,7 +1,17 @@
-const dotenv = require('dotenv')
+require('dotenv')
 
-const result = dotenv.config();
+interface Config {
+    port: string | undefined,
+    env: string | undefined
+}
 
-const { parsed: config } = result;
+const config: Config = {
+    port: process.env.PORT,
+    env: process.env.NODE_ENV
+}
+
+for (const value of Object.values(config)) {
+    if (value === undefined) throw new Error("ERROR: missing to add fields to .env");
+}
 
 export default config
