@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { createConnection } from 'typeorm';
-import Author from './entity/Author';
+import config from './config';
+import { Author } from './entity/Author';
 import { Photo } from './entity/Photo';
 import { PhotoMetadata } from './entity/PhotoMetadata';
 
@@ -8,9 +9,9 @@ createConnection({
   type: 'postgres',
   host: 'localhost',
   port: 5432,
-  username: 'diego',
-  password: '',
-  database: 'deepflow',
+  username: "deepflow_user",
+  password: "password",
+  database: "deepflow",
   entities: [
     Photo,
     PhotoMetadata,
@@ -41,7 +42,7 @@ createConnection({
      photoToUpdate!.name = 'updated name';
     await photoRepository.save(photoToUpdate!);
 
-    const photos = await photoRepository.find({ relations: ['metadata'] });
+  const photos = await photoRepository.find({ relations: ['metadata'] });
 
     // for more complex queries we can use query builder
     // let photos = await connection.getRepository(Photo)

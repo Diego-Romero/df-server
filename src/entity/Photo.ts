@@ -1,11 +1,11 @@
 import {
   Column, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn,
 } from 'typeorm';
-import Author from './Author';
+import { Author } from './Author';
 import { PhotoMetadata } from './PhotoMetadata';
 
 @Entity()
-class Photo {
+export class Photo {
     @PrimaryGeneratedColumn()
     id!: number;
 
@@ -30,5 +30,3 @@ class Photo {
     @ManyToOne(() => Author, (author: { photos: any; }) => author.photos)
     author!: Author;
 }
-
-export default Photo;

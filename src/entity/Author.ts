@@ -4,7 +4,7 @@ import {
 import { Photo } from './Photo';
 
 @Entity()
-class Author {
+export class Author {
     @PrimaryGeneratedColumn()
     id!: number;
 
@@ -15,4 +15,3 @@ class Author {
     photos!: Photo[]
 }
 
-export default Author;

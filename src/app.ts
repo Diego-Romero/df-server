@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import config from './config';
-import './db-connection.ts';
+import './db-connection';
 
 const app = express();
 const port = config.port || 8080;
