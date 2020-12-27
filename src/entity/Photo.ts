@@ -1,17 +1,18 @@
-import { Column, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Author } from "./Author";
-import { PhotoMetadata } from "./PhotoMetadata";
+import {
+  Column, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn,
+} from 'typeorm';
+import Author from './Author';
+import { PhotoMetadata } from './PhotoMetadata';
 
 @Entity()
-export class Photo {
-
+class Photo {
     @PrimaryGeneratedColumn()
     id!: number;
-    
+
     @Column({ length: 100 })
     name!: string;
 
-    @Column({ length: 100})
+    @Column({ length: 100 })
     description!: string;
 
     @Column()
@@ -21,11 +22,13 @@ export class Photo {
     isPublished!: boolean;
 
     // we add cascade true whenever we want to save both objects together and not separately
-    @OneToOne(type => PhotoMetadata, photoMetadata => photoMetadata.photo, {
-        cascade: true
+    @OneToOne(() => PhotoMetadata, (photoMetadata) => photoMetadata.photo, {
+      cascade: true,
     })
     metadata!: PhotoMetadata;
 
-    @ManyToOne(type => Author, author => author.photos)
+    @ManyToOne(() => Author, (author: { photos: any; }) => author.photos)
     author!: Author;
 }
+
+export default Photo;

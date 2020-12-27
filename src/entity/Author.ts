@@ -1,15 +1,18 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Photo } from "./Photo";
-
+import {
+  Column, Entity, OneToMany, PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Photo } from './Photo';
 
 @Entity()
-export class Author {
+class Author {
     @PrimaryGeneratedColumn()
     id!: number;
 
     @Column()
     name!: string;
 
-    @OneToMany(type => Photo, photo => photo.author)
+    @OneToMany(() => Photo, (photo) => photo.author)
     photos!: Photo[]
 }
+
+export default Author;

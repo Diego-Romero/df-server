@@ -4,14 +4,14 @@ interface Config {
 }
 
 const config: Config = {
-    port: process.env.PORT,
-    env: process.env.NODE_ENV
-}
+  port: process.env.PORT,
+  env: process.env.NODE_ENV,
+};
 
 for (const value of Object.values(config)) {
-    if (value === undefined) throw new Error("ERROR: missing to add fields to .env");
+  if (value === undefined) throw new Error('ERROR: missing to add fields to .env');
 }
 
-console.log(`CONFIG:`, config)
+console.log('CONFIG:', config);
 
-export default config
+export default config;

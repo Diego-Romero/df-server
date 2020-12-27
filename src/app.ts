@@ -1,14 +1,12 @@
-import express, { Request, Response} from 'express';
+import express, { Request, Response } from 'express';
 import config from './config';
-import './db-connection';
+import './db-connection.ts';
 
-const app = express()
-const port = config.port || 8080
+const app = express();
+const port = config.port || 8080;
 
 app.get('/', (req: Request, res: Response) => {
-    res.status(200).send("Deepflow health check");
+  res.status(200).send('Deepflow health check');
 });
 
-app.listen(port, () => {
-    return console.log(`server is listening on port: ${port}`)
-})
+app.listen(port, () => console.log(`server is listening on port: ${port}`));
