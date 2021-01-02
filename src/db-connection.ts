@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { createConnection } from 'typeorm';
-import config from './config';
+import { MetadataArgsStorage } from 'typeorm/metadata-args/MetadataArgsStorage';
+import { Album } from './entity/Album';
 import { Author } from './entity/Author';
 import { Photo } from './entity/Photo';
 import { PhotoMetadata } from './entity/PhotoMetadata';
@@ -16,42 +17,44 @@ createConnection({
     Photo,
     PhotoMetadata,
     Author,
+    Album
   ],
   synchronize: true,
   logging: false,
 }).then(async (connection) => {
   console.log('DB loaded correctly :)');
 
-  const photo = new Photo();
-  photo.name = 'photo name';
-  photo.description = 'in the arctic!';
-  photo.views = 1;
-  photo.isPublished = true;
+  // const album1 = new Album();
+  // album1.name = "bears";
+  // connection.manager.save(album1);
 
-  const metadata = new PhotoMetadata();
-  metadata.height = 48;
-  metadata.width = 48;
-  metadata.photo = photo;
+  // const album2 = new Album();
+  // album2.name = "bears";
+  // connection.manager.save(album2);
 
-  const photoRepository = connection.getRepository(Photo);
+  // const photo = new Photo();
+  // photo.name = 'photo name';
+  // photo.description = 'in the arctic!';
+  // photo.views = 1;
+  // photo.isPublished = true;
+  // photo.albums = [album1, album2]
 
-  await photoRepository.save(photo); // is enough to only save photo as we have cascade set to true
-  // await metadataRepository.save(metadata);
+  // const metadata = new PhotoMetadata();
+  // metadata.height = 48;
+  // metadata.width = 48;
+  // metadata.photo = photo;
 
-  const photoToUpdate = await photoRepository.findOne(1);
-     photoToUpdate!.name = 'updated name';
-    await photoRepository.save(photoToUpdate!);
+  // photo.metadata = metadata;
 
-  const photos = await photoRepository.find({ relations: ['metadata'] });
+  // const photoRepository = connection.getRepository(Photo);
 
-    // for more complex queries we can use query builder
-    // let photos = await connection.getRepository(Photo)
-    //     .createQueryBuilder("photo")
-    //     .innerJoinAndSelect("photo.metadata", "metadata")
-    //     .getMany();
-    console.log(photos);
+  // await photoRepository.save(photo); // is enough to only save photo as we have cascade set to true
 
-  // console.log(await photoRepository.find())
+  // // the way to load all the photos along with is associations
+  // const photos = await photoRepository.find({ relations: ['metadata', 'albums'] });
+
+  // console.log(photos);
+
 }).catch((err) => {
   console.error('PROBLEM LOADING THE DB: ', err);
 });

@@ -5,13 +5,14 @@ import { Photo } from './Photo';
 
 @Entity()
 export class Author {
-    @PrimaryGeneratedColumn()
-    id!: number;
 
-    @Column()
-    name!: string;
+  @PrimaryGeneratedColumn()
+  id!: number;
 
-    @OneToMany(() => Photo, (photo) => photo.author)
-    photos!: Photo[]
+  @Column()
+  name!: string;
+
+  @OneToMany(() => Photo, (photo) => photo.author)                                                                                                                             
+  photos!: Photo[]
 }
 

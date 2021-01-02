@@ -1,6 +1,6 @@
 interface Config {
-    port: string | undefined,
-    env: string | undefined
+  port: string | undefined,
+  env: string | undefined
 }
 
 const config: Config = {
@@ -8,7 +8,6 @@ const config: Config = {
   env: process.env.NODE_ENV,
 };
 
-console.log(config)
 for (const value of Object.values(config)) {
   if (value === undefined) throw new Error('ERROR: missing to add fields to .env');
 }
