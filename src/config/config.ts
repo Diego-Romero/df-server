@@ -1,11 +1,13 @@
 interface Config {
   port: string | undefined,
-  env: string | undefined
+  env: string | undefined,
+  sessionSecret: string | undefined
 }
 
 const config: Config = {
   port: process.env.PORT,
   env: process.env.NODE_ENV,
+  sessionSecret: process.env.SESSION_SECRET,
 };
 
 for (const value of Object.values(config)) {

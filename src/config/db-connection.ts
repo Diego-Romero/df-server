@@ -1,10 +1,10 @@
 import 'reflect-metadata';
 import { createConnection } from 'typeorm';
-import { MetadataArgsStorage } from 'typeorm/metadata-args/MetadataArgsStorage';
-import { Album } from './entity/Album';
-import { Author } from './entity/Author';
-import { Photo } from './entity/Photo';
-import { PhotoMetadata } from './entity/PhotoMetadata';
+import { Album } from '../entity/Album';
+import { Author } from '../entity/Author';
+import { Photo } from '../entity/Photo';
+import { PhotoMetadata } from '../entity/PhotoMetadata';
+import { User } from '../entity/User';
 
 createConnection({
   type: 'postgres',
@@ -17,7 +17,8 @@ createConnection({
     Photo,
     PhotoMetadata,
     Author,
-    Album
+    Album,
+    User
   ],
   synchronize: true,
   logging: false,
