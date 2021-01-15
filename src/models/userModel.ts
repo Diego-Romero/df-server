@@ -1,8 +1,14 @@
-import mongoose from "mongoose";
+import mongoose, { Document } from "mongoose";
 
 const validateEmail = function (email: string) {
   const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   return re.test(email);
+}
+
+export interface User extends Document {
+  email: string;
+  name: string;
+  password: string;
 }
 
 const schema = new mongoose.Schema({
@@ -28,4 +34,6 @@ const schema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
-export const UserModel = mongoose.model('User', schema);
+const UserModel = mongoose.model<User>('User', schema);
+
+export default UserModel;

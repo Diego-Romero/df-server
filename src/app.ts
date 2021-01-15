@@ -3,7 +3,7 @@ import config from './config/config';
 import './loaders/db';
 import './loaders/passport';
 import { setMiddleWare } from './loaders/middleware';
-import userRouter from './api/userController';
+import userRouter from './api/user/userController';
 
 const app = express();
 const port = config.port || 8080;

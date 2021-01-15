@@ -1,4 +1,4 @@
-import { UserModel } from "../models/userModel";
+import UserModel from "../models/userModel";
 
 export interface UserDto {
   name: string,
@@ -10,7 +10,6 @@ class UserService {
 
   async register(user: UserDto) {
     const userRecord = await UserModel.create(user);
-
     return userRecord;
   }
 }
