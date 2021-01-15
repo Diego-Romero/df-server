@@ -34,9 +34,6 @@
     "mongoose": "^5.11.12",
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
-    "pg": "^8.5.1",
-    "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.29"
+    "passport-local": "^1.0.0"
   }
 }
