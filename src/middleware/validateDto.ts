@@ -3,7 +3,7 @@ import { plainToClass } from "class-transformer";
 import { validate } from "class-validator";
 import httpStatus from "http-status";
 
-export function validateDTO(dtoClass: any) {
+function validateDTO(dtoClass: any) {
   return function (req: Request, res: Response, next: NextFunction) {
     const output: any = plainToClass(dtoClass, req.body);
     validate(output, { skipMissingProperties: true }).then(errors => {
@@ -22,3 +22,5 @@ export function validateDTO(dtoClass: any) {
     });
   };
 };
+
+export default validateDTO;
