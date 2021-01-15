@@ -23,8 +23,3 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((user: User, done) => {
   done(null, user);
 });
-
-export function isAuthenticated(req: Request, res: Response, next: NextFunction) {
-  if (req.isAuthenticated()) return next();
-  return res.sendStatus(401);
-}

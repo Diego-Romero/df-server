@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import express, { Request, Response } from 'express';
 import config from './config/config';
 import './loaders/db';
