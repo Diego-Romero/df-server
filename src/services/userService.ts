@@ -3,12 +3,6 @@ import bcrypt from 'bcrypt';
 import config from "../config/config";
 import UserSignUpDto from "../dto/user/userSignUpDto";
 
-// export interface UserDto {
-//   name: string,
-//   email: string,
-//   password: string
-// }
-
 class UserService {
 
   async register(user: UserSignUpDto) {

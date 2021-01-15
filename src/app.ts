@@ -5,6 +5,7 @@ import './loaders/db';
 import './loaders/passport';
 import { setMiddleWare } from './loaders/middleware';
 import userRouter from './api/user/userController';
+import seedingRouter from './api/seeding/seedingController';
 
 const app = express();
 const port = config.port || 8080;
@@ -18,5 +19,6 @@ app.get('/', (req: Request, res: Response) => {
 
 // routes
 app.use('/user', userRouter);
+app.use('/seeding', seedingRouter);
 
 app.listen(port, () => console.log(`server is listening on port: ${port}`));
