@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import passport from "passport";
-import config from "./config";
+import config from "../config/config";
 
 export function setMiddleWare(app: Express) {
   const sessionConfig = {
