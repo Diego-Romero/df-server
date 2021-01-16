@@ -1,12 +1,14 @@
-import UserModel, { User } from "../models/userModel";
+import UserModel, { User } from '../models/userModel';
 import bcrypt from 'bcrypt';
-import config from "../config/config";
-import UserSignUpDto from "../dto/user/userSignUpDto";
+import config from '../config/config';
+import UserSignUpDto from '../dto/user/userSignUpDto';
 
 class UserService {
-
   async register(user: UserSignUpDto): Promise<User> {
-    const password = await bcrypt.hash(user.password, config.saltRounds);
+    const password = await bcrypt.hash(
+      user.password,
+      config.saltRounds,
+    );
     const userRecord = await UserModel.create({ ...user, password });
     return userRecord;
   }

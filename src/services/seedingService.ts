@@ -1,4 +1,4 @@
-import UserModel from "../models/userModel";
+import UserModel from '../models/userModel';
 
 const userEmail = 'user@mail.com';
 
@@ -9,8 +9,8 @@ class SeedingService {
       await UserModel.create({
         email: userEmail,
         password: 'password',
-        name: 'user'
-      })
+        name: 'user',
+      });
     }
   }
 }

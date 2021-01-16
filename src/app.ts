@@ -14,11 +14,13 @@ setMiddleWare(app);
 
 // health check
 app.get('/', (req: Request, res: Response) => {
-  res.status(200).json({ message: 'health check confirmed' })
+  res.status(200).json({ message: 'health check confirmed' });
 });
 
 // routes
 app.use('/user', userRouter);
 app.use('/seeding', seedingRouter);
 
-app.listen(port, () => console.log(`server is listening on port: ${port}`));
+app.listen(port, () =>
+  console.log(`server is listening on port: ${port}`),
+);
