@@ -1,7 +1,6 @@
 import { Router } from "express";
 import httpStatus from "http-status";
 import SeedingService from "../../services/seedingService";
-import UserService from "../../services/userService";
 
 const seedingRouter = Router();
 

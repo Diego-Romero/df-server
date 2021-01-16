@@ -6,7 +6,7 @@ import morgan from "morgan";
 import passport from "passport";
 import config from "../config/config";
 
-export function setMiddleWare(app: Express) {
+export function setMiddleWare(app: Express): void {
   const sessionConfig = {
     secret: config.sessionSecret || '',
     resave: false,

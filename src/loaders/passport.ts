@@ -1,7 +1,6 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from 'passport-local';
 import bcrypt from 'bcrypt';
-import { Request, Response, NextFunction } from "express";
 import UserModel, { User } from "../models/userModel";
 
 passport.use(new LocalStrategy({ usernameField: 'email' },
