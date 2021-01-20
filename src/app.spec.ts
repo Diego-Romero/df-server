@@ -1,6 +1,8 @@
 import supertest from 'supertest';
+import setupDB from './loaders/test-setup';
 import app from './app';
 const request = supertest(app);
+// setupDB('deepflow-test-app');
 
 describe('testing app', () => {
   it('should return health endpoint', async (done) => {
