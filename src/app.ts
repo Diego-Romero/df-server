@@ -21,8 +21,10 @@ app.get('/', (req: Request, res: Response) => {
 app.use('/user', userRouter);
 app.use('/seeding', seedingRouter);
 
-app.listen(port, () =>
-  console.log(`server is listening on port: ${port}`),
-);
+app.listen(port, () => {
+  if (config.env !== 'test') {
+    console.log(`server is listening on port: ${port}`);
+  }
+});
 
 export default app;

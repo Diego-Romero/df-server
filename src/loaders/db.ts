@@ -1,4 +1,5 @@
 import Mongoose from 'mongoose';
+import config from '../config/config';
 
 Mongoose.connect('mongodb://localhost/deepflow', {
   useNewUrlParser: true,
@@ -9,5 +10,7 @@ Mongoose.connect('mongodb://localhost/deepflow', {
 const db = Mongoose.connection;
 db.on('error', console.error.bind(console, 'DB CONNECTION ERROR'));
 db.on('open', function () {
-  console.log('DB connected successfully');
+  if (config.env !== 'test') {
+    console.log('DB connected successfully');
+  }
 });
