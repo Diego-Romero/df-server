@@ -5,7 +5,7 @@ import SeedingService from '../../services/seedingService/seedingService';
 const seedingRouter = Router();
 const service = new SeedingService();
 
-seedingRouter.get(`/`, async (req, res) => {
+seedingRouter.get(`/`, async (_req, res) => {
   try {
     await service.seedAll();
     res.sendStatus(httpStatus.OK);
