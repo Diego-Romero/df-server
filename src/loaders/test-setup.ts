@@ -36,7 +36,7 @@ export async function dropAllCollections(): Promise<void> {
 function setupDB(databaseName: string): void {
   let connection;
   beforeAll(async () => {
-    const url = `mongodb://localhost/${databaseName}`;
+    const url = `mongodb://localhost/deepflow-test-${databaseName}`;
     connection = mongoose.createConnection(url, {
       useNewUrlParser: true,
       useCreateIndex: true,

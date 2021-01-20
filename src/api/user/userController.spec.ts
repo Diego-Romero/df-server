@@ -9,7 +9,7 @@ import {
 } from '../../services/seedingService/user.seed';
 const request = supertest(app);
 
-setupDB('deepflow-test-user');
+setupDB('user');
 const seedingService = new SeedingService();
 
 describe('User controller', () => {
