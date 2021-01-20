@@ -1,11 +1,11 @@
 import { Router } from 'express';
 import httpStatus from 'http-status';
-import SeedingService from '../../services/seedingService';
+import SeedingService from '../../services/seedingService/seedingService';
 
 const seedingRouter = Router();
+const service = new SeedingService();
 
 seedingRouter.get(`/`, async (req, res) => {
-  const service = new SeedingService();
   try {
     await service.seedAll();
     res.sendStatus(httpStatus.OK);

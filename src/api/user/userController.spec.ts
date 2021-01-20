@@ -1,15 +1,20 @@
-import { CREATED } from 'http-status';
+import { CREATED, OK } from 'http-status';
 import supertest from 'supertest';
 import app from '../../app';
-import setupDB  from '../../loaders/test-setup';
+import setupDB from '../../loaders/test-setup';
+import SeedingService from '../../services/seedingService/seedingService';
+import {
+  seedingUserEmail,
+  seedingUserPassword,
+} from '../../services/seedingService/user.seed';
 const request = supertest(app);
-const testEmail = `test@mail.com`;
-// todo: seed database
 
 setupDB('deepflow-test-user');
+const seedingService = new SeedingService();
 
 describe('User controller', () => {
-  it(`registers`, async (done) => {
+  test(`registers`, async (done) => {
+    const testEmail = `user_controller@mail.com`;
     const response = await request.post('/user/register').send({
       name: 'test',
       email: testEmail,
@@ -19,13 +24,24 @@ describe('User controller', () => {
     done();
   });
 
-  // it(`logs in`, async (done) => {
-  //   const response = await request.post(`/user/login`).send({
-  //     email: testEmail,
-  //     password: testPassword,
-  //   });
-  //   expect(response.status).toBe(OK);
-  //   done();
-  // });
+  test(`logs in`, async (done) => {
+    await seedingService.seedUsers();
+    const response = await request.post(`/user/login`).send({
+      email: seedingUserEmail,
+      password: seedingUserPassword,
+    });
+    expect(response.status).toBe(OK);
+    done();
+  });
 
+  test('logs out', async (done) => {
+    await seedingService.seedUsers();
+    await request.post(`/user/login`).send({
+      email: seedingUserEmail,
+      password: seedingUserPassword,
+    });
+    const response = await request.post(`/user/logout`);
+    expect(response.status).toBe(OK);
+    done();
+  });
 });
