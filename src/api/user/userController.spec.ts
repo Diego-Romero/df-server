@@ -44,4 +44,18 @@ describe('User controller', () => {
     expect(response.status).toBe(OK);
     done();
   });
+
+  test('me', async (done) => {
+    await seedingService.seedUsers();
+    const loginRes = await request.post(`/user/login`).send({
+      email: seedingUserEmail,
+      password: seedingUserPassword,
+    });
+    const cookie = loginRes.headers['set-cookie'];
+    const response = await request
+      .get(`/user/me`)
+      .set('cookie', cookie);
+    expect(response.status).toBe(OK);
+    done();
+  });
 });
