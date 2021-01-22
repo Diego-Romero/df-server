@@ -1,10 +1,5 @@
 import mongoose, { Document } from 'mongoose';
 
-const validateEmail = function (email: string) {
-  const re = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-  return re.test(email);
-};
-
 export interface User extends Document {
   email: string;
   name: string;
@@ -25,7 +20,6 @@ const schema = new mongoose.Schema(
       trim: true,
       lowercase: true,
       unique: true,
-      validate: [validateEmail, 'invalid email'],
     },
     password: {
       type: String,

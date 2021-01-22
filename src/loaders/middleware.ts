@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import passport from 'passport';
 import config from '../config/config';
+import cors from 'cors';
 
 export function setMiddleWare(app: Express): void {
   const sessionConfig = {
@@ -21,6 +22,7 @@ export function setMiddleWare(app: Express): void {
     sessionConfig.cookie.secure = true; // serve secure cookies
   }
 
+  app.use(cors());
   app.use(session(sessionConfig)); // sessions has to go before passport sessions
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());

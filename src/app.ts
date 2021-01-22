@@ -21,6 +21,7 @@ app.get('/', (req: Request, res: Response) => {
 app.use('/user', userRouter);
 app.use('/seeding', seedingRouter);
 
+// needed to be able to run tests in parallel
 if (config.env !== 'test') {
   app.listen(port, () => {
     console.log(`server is listening on port: ${port}`);

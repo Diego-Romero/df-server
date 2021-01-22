@@ -15,9 +15,11 @@ userRouter.post(
   async (req, res) => {
     const userService = new UserService();
     try {
+      console.log('reaching')
       await userService.register(req.body);
       return res.sendStatus(status.CREATED);
     } catch (e) {
+      console.log(e)
       return res
         .status(status.BAD_REQUEST)
         .json({ message: 'Email already exists' });
